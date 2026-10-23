@@ -20,7 +20,7 @@ bash liberate.sh --game 5 \
   --source "$HOME/Library/Application Support/Steam/steamapps/common/Sid Meier's Civilization V/Civilization V.app"
 ```
 
-`--no-menus` keeps the original menus. Use it if a game update does not match the bundled, checksum-verified menu patches. `--no-mods` skips mod import. `--yes` accepts the supplied/default choices; it does not permit overwriting unrelated applications.
+`--no-menus` keeps the original menus. Use it if a game update does not match the bundled, checksum-verified menu patches. `--no-mods` skips mod import. `--yes` accepts the supplied/default choices; replacing an existing app also requires `--replace`. The existing directory entry is backed up, including older builds and Steam aliases; shortcut targets are never moved. Setup stops if that entry changes while the new app is being built.
 
 ## macOS and processor support
 
@@ -110,6 +110,7 @@ Before pushing, run:
 
 ```sh
 bash tests/smoke.sh
+bash tests/replacement.sh
 bash tests/menus.sh
 bash tests/installer.sh
 ```

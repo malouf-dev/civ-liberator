@@ -21,6 +21,7 @@ Usage: bash liberate.sh [options]
   --data PATH            Dedicated save and mod folder
   --no-menus             Keep the original online menus
   --no-mods              Skip downloaded mod import
+  --replace             Back up and replace an existing destination app
   --yes                 Use supplied/default choices without prompting
   --inspect             Read-only Steam discovery (requires --game)
   --help                Show this help
@@ -29,13 +30,14 @@ No Python, Homebrew or Xcode required. Do not run with sudo.
 Use NO_COLOR=1 for plain output. Ctrl-C cancels before completion.
 HELP
 }
-game='' source_app='' destination='' data='' menus=yes mods=yes unattended=no inspect=no
+game='' source_app='' destination='' data='' menus=yes mods=yes unattended=no inspect=no replace=no
 while [[ $# -gt 0 ]]; do
  case "$1" in
  --game|--source|--destination|--data)
   [[ $# -ge 2 && -n "$2" ]] || fail "$1 needs a value."
   case "$1" in --game) game=$2;; --source) source_app=$2;; --destination) destination=$2;; --data) data=$2;; esac; shift 2;;
  --no-menus) menus=no;shift;; --no-mods) mods=no;shift;; --yes) unattended=yes;shift;; --inspect) inspect=yes;shift;;
+ --replace) replace=yes;shift;;
  --help|-h) help;exit 0;; *) fail "Unknown option: $1. Use --help.";;
  esac
 done
@@ -122,18 +124,23 @@ step 'Ready to install'
 printf '\n  Game          Civilization %s\n  Install in    %s\n  Saves & mods  %s\n' "$roman" "$destination" "$data"
 if [[ $menus == yes ]];then printf '  Online menus  Hidden\n';else printf '  Online menus  Kept (online features remain unavailable)\n';fi
 if [[ $mods == yes ]];then printf '  Existing mods Copied when supported\n';else printf '  Existing mods Not copied\n';fi
-"$helper" check "$game" "$source_app" "$destination" "$data"
+replacement=$("$helper" target-identity "$game" "$destination")
+"$helper" check "$game" "$source_app" "$destination" "$data" "$replacement"
 "$helper" verify "$game" "$ROOT" >/dev/null
-target="$destination/Sid Meier's Civilization $roman.app"
-if [[ -e "$target" || -L "$target" ]];then
- printf '\n  The existing shortcut or Liberator app will be backed up and replaced.\n'
+prompt='Install now?'
+if [[ $replacement != none ]];then
+ printf "\n  Already exists: %s/Sid Meier's Civilization %s.app\n" "$destination" "$roman"
+ printf '  Setup will keep a backup, then replace it with the new copy.\n'
+ if [[ $unattended == yes && $replace != yes ]];then
+  fail 'To replace this app without prompting, add --replace. Otherwise run without --yes.'
+ fi
+ prompt='Replace the existing app and install?'
 fi
 printf '\n  Your Steam game and existing saves stay untouched.\n'
-
 if [[ $unattended == no ]];then
- printf '\n';confirm=$(ask_bool 'Install now?' no)
+ printf '\n';confirm=$(ask_bool "$prompt" no)
  [[ $confirm == yes ]] || { printf '\n  Cancelled. Nothing was installed.\n';exit 0; }
 fi
 step 'Installing'
 printf '\n  This may take a few minutes.\n'
-exec "$helper" build "$game" "$ROOT" "$source_app" "$destination" "$data" "$menus" "$mods"
+exec "$helper" build "$game" "$ROOT" "$source_app" "$destination" "$data" "$menus" "$mods" "$replacement"

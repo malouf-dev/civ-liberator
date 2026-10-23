@@ -40,7 +40,7 @@ By default, the app goes in `/Applications`, or `~/Applications` if that folder 
 | Civ V | `~/Documents/Games/Civilization V` | `MODS` |
 | Civ VI | `~/Documents/Games/Civilization VI` | `Mods` |
 
-Keep the data folder, including its hidden files. A recognized Steam shortcut or previous Liberator app is backed up before replacement; unrelated apps are left alone.
+Keep the data folder, including its hidden files. If the destination already contains an app or Steam shortcut, setup asks before replacing it and keeps a backup. Declining leaves it untouched. Unattended replacement requires both `--yes` and `--replace`.
 
 ## Help
 
