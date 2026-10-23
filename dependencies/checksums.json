@@ -1,0 +1,10 @@
+{
+  "dependencies\/goldberg-build.patch" : "c37f37991513d15c42d76f3a3bec85bf08f7e6ecb2410e73e368545d28ca8399",
+  "dependencies\/Goldberg-LICENSE.txt" : "e3a994d82e644b03a792a930f574002658412f62407f5fee083f2555c5f23118",
+  "dependencies\/GPL-3.0.txt" : "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986",
+  "dependencies\/libsteam_api.dylib" : "5f592b61f7858ab1aa0f0be553799d0a83e553838b8976ab6eab0cda5866745c",
+  "dependencies\/menus-5.json" : "64ba277bf3a0a90545525f4c82cdb09aa1a6779dd05253ce7f0eda3675c96ec8",
+  "dependencies\/menus-6.json" : "8455564813a76a155c57789cec5601f28ab40a9a473216213bdad60f73260e45",
+  "dependencies\/source\/goldberg-2ad4a39.tar.gz" : "fcb9b077c07ca547a38272e0daff4b1214f4a577a97369ed043e125f25971b1a",
+  "dependencies\/source\/protobuf-23.1-with-abseil.tar.gz" : "1663405832f97b97581c3d94dee1d6b881cb9d506afb5ed62738495e2687f8a9"
+}

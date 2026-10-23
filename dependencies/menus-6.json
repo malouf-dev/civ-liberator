@@ -1,0 +1,1214 @@
+[
+  {
+    "path": "Contents/Assets/Base/Assets/UI/FrontEnd/MainMenu.lua",
+    "before": "f6906703f0fc25a675bdcba947b5e7c3b204be48ea04df231ae70eef0e3b1c00",
+    "after": "ac471bb966a8d75f069d21470d3ff8f9f24a1b60e79ee72afd145d2557a8cfda",
+    "edits": [
+      {
+        "offset": 10166,
+        "length": 4,
+        "text": "    -- O"
+      },
+      {
+        "offset": 10171,
+        "length": 6,
+        "text": "l"
+      },
+      {
+        "offset": 10179,
+        "length": 5,
+        "text": "e serv"
+      },
+      {
+        "offset": 10185,
+        "length": 4,
+        "text": ""
+      },
+      {
+        "offset": 10192,
+        "length": 0,
+        "text": " are unavailable in the "
+      },
+      {
+        "offset": 10193,
+        "length": 6,
+        "text": "tanda"
+      },
+      {
+        "offset": 10201,
+        "length": 1,
+        "text": "n"
+      },
+      {
+        "offset": 10203,
+        "length": 3,
+        "text": " copy."
+      },
+      {
+        "offset": 10418,
+        "length": 6,
+        "text": ""
+      },
+      {
+        "offset": 10425,
+        "length": 5,
+        "text": ""
+      },
+      {
+        "offset": 10431,
+        "length": 1,
+        "text": ""
+      },
+      {
+        "offset": 10433,
+        "length": 10,
+        "text": ""
+      },
+      {
+        "offset": 10444,
+        "length": 480,
+        "text": ""
+      },
+      {
+        "offset": 10956,
+        "length": 7,
+        "text": "false"
+      },
+      {
+        "offset": 16212,
+        "length": 2,
+        "text": "    -- Online services are "
+      },
+      {
+        "offset": 16215,
+        "length": 0,
+        "text": "n"
+      },
+      {
+        "offset": 16216,
+        "length": 1,
+        "text": ""
+      },
+      {
+        "offset": 16218,
+        "length": 0,
+        "text": "ailabl"
+      },
+      {
+        "offset": 16219,
+        "length": 0,
+        "text": " i"
+      },
+      {
+        "offset": 16220,
+        "length": 0,
+        "text": " "
+      },
+      {
+        "offset": 16221,
+        "length": 0,
+        "text": "he "
+      },
+      {
+        "offset": 16222,
+        "length": 3,
+        "text": "t"
+      },
+      {
+        "offset": 16227,
+        "length": 1,
+        "text": "dalon"
+      },
+      {
+        "offset": 16229,
+        "length": 62,
+        "text": " c"
+      },
+      {
+        "offset": 16293,
+        "length": 32,
+        "text": ""
+      },
+      {
+        "offset": 16327,
+        "length": 21,
+        "text": ""
+      },
+      {
+        "offset": 16456,
+        "length": 2,
+        "text": "    -- Online services are "
+      },
+      {
+        "offset": 16459,
+        "length": 0,
+        "text": "n"
+      },
+      {
+        "offset": 16460,
+        "length": 1,
+        "text": ""
+      },
+      {
+        "offset": 16462,
+        "length": 0,
+        "text": "ailabl"
+      },
+      {
+        "offset": 16463,
+        "length": 0,
+        "text": " i"
+      },
+      {
+        "offset": 16464,
+        "length": 0,
+        "text": " "
+      },
+      {
+        "offset": 16465,
+        "length": 0,
+        "text": "he "
+      },
+      {
+        "offset": 16466,
+        "length": 2,
+        "text": ""
+      },
+      {
+        "offset": 16470,
+        "length": 4,
+        "text": "ndal"
+      },
+      {
+        "offset": 16475,
+        "length": 5,
+        "text": "ne cop"
+      },
+      {
+        "offset": 16481,
+        "length": 3,
+        "text": "."
+      },
+      {
+        "offset": 17936,
+        "length": 2,
+        "text": "    -- Online services are unavailable in the s"
+      },
+      {
+        "offset": 17940,
+        "length": 3,
+        "text": "nd"
+      },
+      {
+        "offset": 17944,
+        "length": 1,
+        "text": "lone "
+      },
+      {
+        "offset": 17946,
+        "length": 54,
+        "text": "opy."
+      },
+      {
+        "offset": 18040,
+        "length": 2,
+        "text": "    -- Online services are unavailable in the s"
+      },
+      {
+        "offset": 18044,
+        "length": 3,
+        "text": "nd"
+      },
+      {
+        "offset": 18048,
+        "length": 1,
+        "text": "lone "
+      },
+      {
+        "offset": 18050,
+        "length": 59,
+        "text": "opy."
+      },
+      {
+        "offset": 32849,
+        "length": 2,
+        "text": "    -- Online services are "
+      },
+      {
+        "offset": 32852,
+        "length": 0,
+        "text": "n"
+      },
+      {
+        "offset": 32853,
+        "length": 1,
+        "text": ""
+      },
+      {
+        "offset": 32855,
+        "length": 0,
+        "text": "ailabl"
+      },
+      {
+        "offset": 32856,
+        "length": 0,
+        "text": " i"
+      },
+      {
+        "offset": 32857,
+        "length": 0,
+        "text": " "
+      },
+      {
+        "offset": 32858,
+        "length": 0,
+        "text": "he "
+      },
+      {
+        "offset": 32859,
+        "length": 3,
+        "text": "t"
+      },
+      {
+        "offset": 32864,
+        "length": 1,
+        "text": "dalon"
+      },
+      {
+        "offset": 32866,
+        "length": 57,
+        "text": " c"
+      },
+      {
+        "offset": 32925,
+        "length": 32,
+        "text": ""
+      },
+      {
+        "offset": 32959,
+        "length": 20,
+        "text": ""
+      },
+      {
+        "offset": 33293,
+        "length": 2,
+        "text": "    -- Online services are "
+      },
+      {
+        "offset": 33296,
+        "length": 0,
+        "text": "n"
+      },
+      {
+        "offset": 33297,
+        "length": 1,
+        "text": ""
+      },
+      {
+        "offset": 33299,
+        "length": 0,
+        "text": "ailabl"
+      },
+      {
+        "offset": 33300,
+        "length": 0,
+        "text": " i"
+      },
+      {
+        "offset": 33301,
+        "length": 0,
+        "text": " "
+      },
+      {
+        "offset": 33302,
+        "length": 0,
+        "text": "he "
+      },
+      {
+        "offset": 33303,
+        "length": 3,
+        "text": "t"
+      },
+      {
+        "offset": 33308,
+        "length": 1,
+        "text": "dalon"
+      },
+      {
+        "offset": 33310,
+        "length": 56,
+        "text": " c"
+      },
+      {
+        "offset": 33368,
+        "length": 32,
+        "text": ""
+      },
+      {
+        "offset": 33402,
+        "length": 20,
+        "text": ""
+      },
+      {
+        "offset": 33526,
+        "length": 4,
+        "text": "    -- Online services are unavailable in the st"
+      },
+      {
+        "offset": 33532,
+        "length": 0,
+        "text": "d"
+      },
+      {
+        "offset": 33533,
+        "length": 1,
+        "text": "lon"
+      },
+      {
+        "offset": 33535,
+        "length": 8,
+        "text": " c"
+      },
+      {
+        "offset": 33545,
+        "length": 42,
+        "text": ""
+      },
+      {
+        "offset": 33589,
+        "length": 20,
+        "text": ""
+      },
+      {
+        "offset": 40965,
+        "length": 14,
+        "text": ""
+      },
+      {
+        "offset": 40980,
+        "length": 1,
+        "text": ""
+      },
+      {
+        "offset": 40982,
+        "length": 40,
+        "text": ""
+      },
+      {
+        "offset": 41023,
+        "length": 1,
+        "text": ""
+      },
+      {
+        "offset": 41025,
+        "length": 619,
+        "text": ""
+      },
+      {
+        "offset": 41684,
+        "length": 2,
+        "text": " "
+      },
+      {
+        "offset": 41707,
+        "length": 4,
+        "text": " "
+      },
+      {
+        "offset": 41757,
+        "length": 911,
+        "text": ""
+      },
+      {
+        "offset": 45037,
+        "length": 9,
+        "text": ""
+      },
+      {
+        "offset": 45056,
+        "length": 0,
+        "text": "_HOTSEAT_GAME"
+      },
+      {
+        "offset": 45094,
+        "length": 39,
+        "text": ""
+      },
+      {
+        "offset": 58298,
+        "length": 3,
+        "text": ""
+      },
+      {
+        "offset": 58302,
+        "length": 3,
+        "text": ""
+      },
+      {
+        "offset": 58306,
+        "length": 27,
+        "text": ""
+      },
+      {
+        "offset": 58334,
+        "length": 12,
+        "text": ""
+      },
+      {
+        "offset": 58347,
+        "length": 453,
+        "text": ""
+      },
+      {
+        "offset": 58843,
+        "length": 1894,
+        "text": ""
+      },
+      {
+        "offset": 62544,
+        "length": 1,
+        "text": "    -- Onl"
+      },
+      {
+        "offset": 62546,
+        "length": 1,
+        "text": "ne"
+      },
+      {
+        "offset": 62548,
+        "length": 6,
+        "text": "s"
+      },
+      {
+        "offset": 62555,
+        "length": 2,
+        "text": "rvic"
+      },
+      {
+        "offset": 62559,
+        "length": 4,
+        "text": " are "
+      },
+      {
+        "offset": 62564,
+        "length": 10,
+        "text": "n"
+      },
+      {
+        "offset": 62575,
+        "length": 6,
+        "text": ""
+      },
+      {
+        "offset": 62589,
+        "length": 8,
+        "text": " in"
+      },
+      {
+        "offset": 62601,
+        "length": 0,
+        "text": " sta"
+      },
+      {
+        "offset": 62602,
+        "length": 43,
+        "text": ""
+      },
+      {
+        "offset": 62646,
+        "length": 43,
+        "text": ""
+      },
+      {
+        "offset": 62692,
+        "length": 16,
+        "text": "ne c"
+      },
+      {
+        "offset": 62710,
+        "length": 30,
+        "text": "y."
+      },
+      {
+        "offset": 63348,
+        "length": 1,
+        "text": "-- Standalone: do not req"
+      },
+      {
+        "offset": 63350,
+        "length": 0,
+        "text": "est "
+      },
+      {
+        "offset": 63351,
+        "length": 3,
+        "text": "ccou"
+      },
+      {
+        "offset": 63356,
+        "length": 2,
+        "text": " "
+      },
+      {
+        "offset": 63359,
+        "length": 0,
+        "text": "I u"
+      },
+      {
+        "offset": 63364,
+        "length": 6,
+        "text": ""
+      },
+      {
+        "offset": 63371,
+        "length": 12,
+        "text": "."
+      },
+      {
+        "offset": 66513,
+        "length": 1,
+        "text": "    -- Onl"
+      },
+      {
+        "offset": 66515,
+        "length": 2,
+        "text": ""
+      },
+      {
+        "offset": 66518,
+        "length": 2,
+        "text": "e"
+      },
+      {
+        "offset": 66521,
+        "length": 2,
+        "text": "servi"
+      },
+      {
+        "offset": 66524,
+        "length": 1,
+        "text": ""
+      },
+      {
+        "offset": 66526,
+        "length": 2,
+        "text": "s ar"
+      },
+      {
+        "offset": 66529,
+        "length": 2,
+        "text": " unavai"
+      },
+      {
+        "offset": 66532,
+        "length": 6,
+        "text": "able "
+      },
+      {
+        "offset": 66539,
+        "length": 3,
+        "text": "n"
+      },
+      {
+        "offset": 66546,
+        "length": 9,
+        "text": ""
+      },
+      {
+        "offset": 66556,
+        "length": 1,
+        "text": "st"
+      },
+      {
+        "offset": 66560,
+        "length": 2,
+        "text": "al"
+      },
+      {
+        "offset": 66564,
+        "length": 1,
+        "text": ""
+      },
+      {
+        "offset": 66566,
+        "length": 0,
+        "text": " "
+      },
+      {
+        "offset": 66567,
+        "length": 17,
+        "text": "opy"
+      },
+      {
+        "offset": 66585,
+        "length": 93,
+        "text": ""
+      },
+      {
+        "offset": 68943,
+        "length": 3,
+        "text": ""
+      },
+      {
+        "offset": 68947,
+        "length": 0,
+        "text": "   -- O"
+      },
+      {
+        "offset": 68948,
+        "length": 471,
+        "text": ""
+      },
+      {
+        "offset": 69422,
+        "length": 6,
+        "text": "e se"
+      },
+      {
+        "offset": 69429,
+        "length": 4,
+        "text": "vi"
+      },
+      {
+        "offset": 69434,
+        "length": 0,
+        "text": "es "
+      },
+      {
+        "offset": 69436,
+        "length": 1,
+        "text": "e "
+      },
+      {
+        "offset": 69438,
+        "length": 18,
+        "text": ""
+      },
+      {
+        "offset": 69458,
+        "length": 1,
+        "text": "va"
+      },
+      {
+        "offset": 69460,
+        "length": 18,
+        "text": ""
+      },
+      {
+        "offset": 69479,
+        "length": 320,
+        "text": ""
+      },
+      {
+        "offset": 69803,
+        "length": 1,
+        "text": ""
+      },
+      {
+        "offset": 69805,
+        "length": 3,
+        "text": "i"
+      },
+      {
+        "offset": 69809,
+        "length": 287,
+        "text": ""
+      },
+      {
+        "offset": 70101,
+        "length": 5,
+        "text": "sta"
+      },
+      {
+        "offset": 70107,
+        "length": 3,
+        "text": "da"
+      },
+      {
+        "offset": 70111,
+        "length": 20,
+        "text": ""
+      },
+      {
+        "offset": 70133,
+        "length": 47,
+        "text": ""
+      },
+      {
+        "offset": 70183,
+        "length": 2,
+        "text": ""
+      },
+      {
+        "offset": 70186,
+        "length": 38,
+        "text": "p"
+      },
+      {
+        "offset": 70225,
+        "length": 96,
+        "text": ""
+      },
+      {
+        "offset": 70322,
+        "length": 247,
+        "text": ""
+      },
+      {
+        "offset": 71116,
+        "length": 3,
+        "text": " "
+      },
+      {
+        "offset": 71120,
+        "length": 2,
+        "text": "ru"
+      },
+      {
+        "offset": 71123,
+        "length": 42,
+        "text": ""
+      },
+      {
+        "offset": 71169,
+        "length": 0,
+        "text": "n -- Standalone: hide 2K sign-i"
+      }
+    ]
+  },
+  {
+    "path": "Contents/Assets/Base/Assets/UI/FiraxisLive/My2K.lua",
+    "before": "c33eacc2d9b62a7c703d5fe848e52100d59ff2aae8979e3f4534ca478d4c3846",
+    "after": "548f7da8d3553309335b2334e52f1a556cb3683d8785ed6460c2f2cafcf0e95f",
+    "edits": [
+      {
+        "offset": 3,
+        "length": 191,
+        "text": "S"
+      },
+      {
+        "offset": 197,
+        "length": 250,
+        "text": ""
+      },
+      {
+        "offset": 448,
+        "length": 228,
+        "text": ""
+      },
+      {
+        "offset": 679,
+        "length": 4,
+        "text": "n"
+      },
+      {
+        "offset": 684,
+        "length": 24,
+        "text": ":"
+      },
+      {
+        "offset": 710,
+        "length": 269,
+        "text": ""
+      },
+      {
+        "offset": 980,
+        "length": 237,
+        "text": ""
+      },
+      {
+        "offset": 1221,
+        "length": 93,
+        "text": ""
+      },
+      {
+        "offset": 1317,
+        "length": 94,
+        "text": ""
+      },
+      {
+        "offset": 1413,
+        "length": 7400,
+        "text": ""
+      },
+      {
+        "offset": 8822,
+        "length": 0,
+        "text": "UI and "
+      },
+      {
+        "offset": 8823,
+        "length": 0,
+        "text": "t"
+      },
+      {
+        "offset": 8825,
+        "length": 79,
+        "text": ""
+      },
+      {
+        "offset": 8909,
+        "length": 6,
+        "text": ""
+      },
+      {
+        "offset": 8916,
+        "length": 1,
+        "text": ""
+      },
+      {
+        "offset": 8918,
+        "length": 234,
+        "text": ""
+      },
+      {
+        "offset": 9155,
+        "length": 1,
+        "text": ""
+      },
+      {
+        "offset": 9157,
+        "length": 305,
+        "text": ""
+      },
+      {
+        "offset": 9464,
+        "length": 8,
+        "text": "s"
+      },
+      {
+        "offset": 9477,
+        "length": 13,
+        "text": ""
+      },
+      {
+        "offset": 9491,
+        "length": 407,
+        "text": ""
+      },
+      {
+        "offset": 9905,
+        "length": 15519,
+        "text": ""
+      },
+      {
+        "offset": 25426,
+        "length": 5315,
+        "text": ""
+      }
+    ]
+  },
+  {
+    "path": "Contents/Assets/Base/Assets/UI/FrontEnd/Mods.lua",
+    "before": "a82ef3867ef787095054a6811afab03994db5f13d1465471dc2dfa3b47a1bb6b",
+    "after": "6599bca5400e559ab295950772c36496207134571aa683410014280ce0248b47",
+    "edits": [
+      {
+        "offset": 27803,
+        "length": 6,
+        "text": "    O"
+      },
+      {
+        "offset": 27810,
+        "length": 66,
+        "text": ""
+      },
+      {
+        "offset": 27885,
+        "length": 0,
+        "text": "Mods"
+      },
+      {
+        "offset": 27888,
+        "length": 4,
+        "text": "C"
+      },
+      {
+        "offset": 27893,
+        "length": 5,
+        "text": ""
+      },
+      {
+        "offset": 27899,
+        "length": 2,
+        "text": "ck"
+      },
+      {
+        "offset": 27908,
+        "length": 81,
+        "text": ""
+      },
+      {
+        "offset": 28087,
+        "length": 1,
+        "text": "    -- Install downloaded mods "
+      },
+      {
+        "offset": 28089,
+        "length": 12,
+        "text": ""
+      },
+      {
+        "offset": 28102,
+        "length": 3,
+        "text": ""
+      },
+      {
+        "offset": 28109,
+        "length": 6,
+        "text": " local Mods dir"
+      },
+      {
+        "offset": 28116,
+        "length": 4,
+        "text": ""
+      },
+      {
+        "offset": 28122,
+        "length": 19,
+        "text": ""
+      },
+      {
+        "offset": 28143,
+        "length": 13,
+        "text": "y."
+      },
+      {
+        "offset": 28409,
+        "length": 4,
+        "text": "tru"
+      },
+      {
+        "offset": 34706,
+        "length": 4,
+        "text": "tru"
+      }
+    ]
+  },
+  {
+    "path": "Contents/Assets/Base/Assets/UI/FrontEnd/LoadGameMenu.lua",
+    "before": "7c75af663324b96e47c919c17b33ab9d24b971c0ba46450944839030eaf9964d",
+    "after": "29da405f0dd3fc7acaf31b3d7e6245941cee5beb09b17e15d274ea8f6d5a5793",
+    "edits": [
+      {
+        "offset": 6485,
+        "length": 5,
+        "text": "fals"
+      },
+      {
+        "offset": 6491,
+        "length": 198,
+        "text": ""
+      },
+      {
+        "offset": 6741,
+        "length": 5,
+        "text": "fals"
+      },
+      {
+        "offset": 6747,
+        "length": 1,
+        "text": ", ni"
+      },
+      {
+        "offset": 6749,
+        "length": 23,
+        "text": ""
+      },
+      {
+        "offset": 6842,
+        "length": 4,
+        "text": "tru"
+      },
+      {
+        "offset": 7308,
+        "length": 4,
+        "text": "tru"
+      },
+      {
+        "offset": 7361,
+        "length": 4,
+        "text": "tru"
+      },
+      {
+        "offset": 7711,
+        "length": 4,
+        "text": "tru"
+      },
+      {
+        "offset": 7836,
+        "length": 4,
+        "text": "tru"
+      },
+      {
+        "offset": 8416,
+        "length": 4,
+        "text": "tru"
+      },
+      {
+        "offset": 11572,
+        "length": 3,
+        "text": ""
+      },
+      {
+        "offset": 11576,
+        "length": 12,
+        "text": ""
+      },
+      {
+        "offset": 11589,
+        "length": 5,
+        "text": ""
+      },
+      {
+        "offset": 11595,
+        "length": 1,
+        "text": ""
+      },
+      {
+        "offset": 11597,
+        "length": 214,
+        "text": ""
+      },
+      {
+        "offset": 11830,
+        "length": 167,
+        "text": ""
+      },
+      {
+        "offset": 12002,
+        "length": 136,
+        "text": ""
+      }
+    ]
+  },
+  {
+    "path": "Contents/Assets/Base/Assets/UI/Menus/SaveGameMenu.lua",
+    "before": "5b13270991eaae481bbe1eba43797719c7de2d20594283481c8aea8d3e149e59",
+    "after": "42b53ba44798ef66fac50425ebd0c212ce599b36a10b3b850429dae400749107",
+    "edits": [
+      {
+        "offset": 3010,
+        "length": 6,
+        "text": ""
+      },
+      {
+        "offset": 3017,
+        "length": 19,
+        "text": ""
+      },
+      {
+        "offset": 3037,
+        "length": 1,
+        "text": ""
+      },
+      {
+        "offset": 3039,
+        "length": 3,
+        "text": ""
+      },
+      {
+        "offset": 3043,
+        "length": 146,
+        "text": ""
+      },
+      {
+        "offset": 3208,
+        "length": 211,
+        "text": ""
+      },
+      {
+        "offset": 3424,
+        "length": 1,
+        "text": ""
+      },
+      {
+        "offset": 4158,
+        "length": 5,
+        "text": "fals"
+      },
+      {
+        "offset": 4164,
+        "length": 1,
+        "text": ", ni"
+      },
+      {
+        "offset": 4166,
+        "length": 23,
+        "text": ""
+      },
+      {
+        "offset": 4213,
+        "length": 5,
+        "text": "fals"
+      },
+      {
+        "offset": 4219,
+        "length": 160,
+        "text": ""
+      },
+      {
+        "offset": 4410,
+        "length": 4,
+        "text": "tru"
+      },
+      {
+        "offset": 5035,
+        "length": 4,
+        "text": "tru"
+      },
+      {
+        "offset": 5233,
+        "length": 4,
+        "text": "tru"
+      },
+      {
+        "offset": 5534,
+        "length": 4,
+        "text": "tru"
+      },
+      {
+        "offset": 5587,
+        "length": 4,
+        "text": "tru"
+      },
+      {
+        "offset": 5872,
+        "length": 4,
+        "text": "tru"
+      }
+    ]
+  },
+  {
+    "path": "Contents/Assets/Base/Assets/UI/FrontEnd/LoadSaveMenu_Shared.lua",
+    "before": "54838e35c97c0cc0ead1260da9c73f428a276be8f5c87c362b1fc06a5bbd91ba",
+    "after": "a946751ff0e8c0266b4a3f6b84bc2a9d93c88f46109318f3494f4bf0c13e0873",
+    "edits": [
+      {
+        "offset": 32999,
+        "length": 3,
+        "text": ""
+      },
+      {
+        "offset": 33003,
+        "length": 4,
+        "text": ""
+      },
+      {
+        "offset": 33008,
+        "length": 53,
+        "text": ""
+      },
+      {
+        "offset": 33062,
+        "length": 7,
+        "text": " "
+      },
+      {
+        "offset": 33080,
+        "length": 20,
+        "text": ""
+      }
+    ]
+  }
+]

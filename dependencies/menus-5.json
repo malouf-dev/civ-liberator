@@ -1,0 +1,866 @@
+[
+  {
+    "path": "Contents/Assets/Assets/UI/FrontEnd/Multiplayer/MultiplayerSelect.lua",
+    "before": "92535e74f7ce591ee28462ac920cc84566f658ff23cf032429286c1d531c9a53",
+    "after": "be4bad06f9d6a7d22310b5b924109d424d04f7f0af3bd8f3b096b681d9debcb0",
+    "edits": [
+      {
+        "offset": 698,
+        "length": 3,
+        "text": "\n    -- Standal"
+      },
+      {
+        "offset": 703,
+        "length": 0,
+        "text": "e: only same-machine ho"
+      },
+      {
+        "offset": 704,
+        "length": 0,
+        "text": "seat is available.\n    fo"
+      },
+      {
+        "offset": 705,
+        "length": 2,
+        "text": " _, name in ipair"
+      },
+      {
+        "offset": 708,
+        "length": 1,
+        "text": "({\""
+      },
+      {
+        "offset": 723,
+        "length": 0,
+        "text": "\", \"PitbossButton\", \"InternetButton\", \"LANButton\", \"ReconnectButton\"}) do\n        Controls[name]"
+      },
+      {
+        "offset": 732,
+        "length": 6,
+        "text": ""
+      },
+      {
+        "offset": 739,
+        "length": 2,
+        "text": ""
+      },
+      {
+        "offset": 742,
+        "length": 4,
+        "text": "u"
+      },
+      {
+        "offset": 750,
+        "length": 2,
+        "text": "        Controls[name]:SetDisabled(true);\n    end\n    "
+      },
+      {
+        "offset": 783,
+        "length": 0,
+        "text": "fal"
+      },
+      {
+        "offset": 784,
+        "length": 13,
+        "text": ""
+      },
+      {
+        "offset": 800,
+        "length": 1,
+        "text": ""
+      },
+      {
+        "offset": 802,
+        "length": 2,
+        "text": "    "
+      },
+      {
+        "offset": 813,
+        "length": 1,
+        "text": "Ma"
+      },
+      {
+        "offset": 815,
+        "length": 0,
+        "text": "nS"
+      },
+      {
+        "offset": 816,
+        "length": 5,
+        "text": "ack:Calc"
+      },
+      {
+        "offset": 822,
+        "length": 0,
+        "text": "la"
+      },
+      {
+        "offset": 823,
+        "length": 4,
+        "text": "e"
+      },
+      {
+        "offset": 828,
+        "length": 3,
+        "text": ""
+      },
+      {
+        "offset": 832,
+        "length": 1,
+        "text": "z"
+      },
+      {
+        "offset": 835,
+        "length": 15,
+        "text": ""
+      },
+      {
+        "offset": 852,
+        "length": 1,
+        "text": ""
+      },
+      {
+        "offset": 854,
+        "length": 7,
+        "text": ""
+      },
+      {
+        "offset": 862,
+        "length": 4,
+        "text": ""
+      },
+      {
+        "offset": 867,
+        "length": 7,
+        "text": ""
+      },
+      {
+        "offset": 875,
+        "length": 4,
+        "text": ""
+      },
+      {
+        "offset": 880,
+        "length": 10,
+        "text": ""
+      },
+      {
+        "offset": 899,
+        "length": 1,
+        "text": "Mai"
+      },
+      {
+        "offset": 901,
+        "length": 0,
+        "text": "S"
+      },
+      {
+        "offset": 902,
+        "length": 0,
+        "text": "ack:R"
+      },
+      {
+        "offset": 903,
+        "length": 0,
+        "text": "p"
+      },
+      {
+        "offset": 904,
+        "length": 0,
+        "text": "ocessA"
+      },
+      {
+        "offset": 905,
+        "length": 22,
+        "text": "c"
+      },
+      {
+        "offset": 929,
+        "length": 6,
+        "text": ""
+      },
+      {
+        "offset": 936,
+        "length": 5,
+        "text": "ing("
+      },
+      {
+        "offset": 944,
+        "length": 32,
+        "text": ""
+      },
+      {
+        "offset": 977,
+        "length": 23,
+        "text": "   "
+      },
+      {
+        "offset": 1022,
+        "length": 0,
+        "text": "fal"
+      },
+      {
+        "offset": 1023,
+        "length": 13,
+        "text": ""
+      },
+      {
+        "offset": 1207,
+        "length": 1,
+        "text": "    -- Unava"
+      },
+      {
+        "offset": 1209,
+        "length": 5,
+        "text": "la"
+      },
+      {
+        "offset": 1215,
+        "length": 7,
+        "text": ""
+      },
+      {
+        "offset": 1224,
+        "length": 1,
+        "text": " in"
+      },
+      {
+        "offset": 1229,
+        "length": 9,
+        "text": " s"
+      },
+      {
+        "offset": 1239,
+        "length": 7,
+        "text": ""
+      },
+      {
+        "offset": 1247,
+        "length": 151,
+        "text": ""
+      },
+      {
+        "offset": 1400,
+        "length": 6,
+        "text": ""
+      },
+      {
+        "offset": 1407,
+        "length": 11,
+        "text": "lo"
+      },
+      {
+        "offset": 1420,
+        "length": 6,
+        "text": ""
+      },
+      {
+        "offset": 1427,
+        "length": 173,
+        "text": "c"
+      },
+      {
+        "offset": 1602,
+        "length": 38,
+        "text": ""
+      },
+      {
+        "offset": 1642,
+        "length": 16,
+        "text": ""
+      },
+      {
+        "offset": 1898,
+        "length": 1,
+        "text": "    -- Unava"
+      },
+      {
+        "offset": 1900,
+        "length": 5,
+        "text": "la"
+      },
+      {
+        "offset": 1906,
+        "length": 7,
+        "text": ""
+      },
+      {
+        "offset": 1915,
+        "length": 1,
+        "text": " in"
+      },
+      {
+        "offset": 1920,
+        "length": 9,
+        "text": " s"
+      },
+      {
+        "offset": 1930,
+        "length": 7,
+        "text": ""
+      },
+      {
+        "offset": 1938,
+        "length": 141,
+        "text": ""
+      },
+      {
+        "offset": 2081,
+        "length": 6,
+        "text": ""
+      },
+      {
+        "offset": 2088,
+        "length": 11,
+        "text": "lo"
+      },
+      {
+        "offset": 2101,
+        "length": 6,
+        "text": ""
+      },
+      {
+        "offset": 2108,
+        "length": 175,
+        "text": "c"
+      },
+      {
+        "offset": 2285,
+        "length": 38,
+        "text": ""
+      },
+      {
+        "offset": 2325,
+        "length": 15,
+        "text": ""
+      },
+      {
+        "offset": 2591,
+        "length": 2,
+        "text": "    -- Unava"
+      },
+      {
+        "offset": 2594,
+        "length": 1,
+        "text": "la"
+      },
+      {
+        "offset": 2596,
+        "length": 7,
+        "text": ""
+      },
+      {
+        "offset": 2606,
+        "length": 1,
+        "text": "in"
+      },
+      {
+        "offset": 2608,
+        "length": 1,
+        "text": "the stand"
+      },
+      {
+        "offset": 2611,
+        "length": 1,
+        "text": "on"
+      },
+      {
+        "offset": 2613,
+        "length": 6,
+        "text": " c"
+      },
+      {
+        "offset": 2620,
+        "length": 18,
+        "text": ""
+      },
+      {
+        "offset": 2639,
+        "length": 2,
+        "text": ""
+      },
+      {
+        "offset": 2642,
+        "length": 7,
+        "text": "."
+      },
+      {
+        "offset": 3354,
+        "length": 2,
+        "text": "    -- Unava"
+      },
+      {
+        "offset": 3357,
+        "length": 1,
+        "text": "la"
+      },
+      {
+        "offset": 3359,
+        "length": 7,
+        "text": ""
+      },
+      {
+        "offset": 3369,
+        "length": 1,
+        "text": "in"
+      },
+      {
+        "offset": 3372,
+        "length": 2,
+        "text": "h"
+      },
+      {
+        "offset": 3375,
+        "length": 6,
+        "text": " standal"
+      },
+      {
+        "offset": 3382,
+        "length": 3,
+        "text": "n"
+      },
+      {
+        "offset": 3386,
+        "length": 4,
+        "text": " c"
+      },
+      {
+        "offset": 3391,
+        "length": 9,
+        "text": ""
+      },
+      {
+        "offset": 3401,
+        "length": 2,
+        "text": ""
+      },
+      {
+        "offset": 3404,
+        "length": 7,
+        "text": "."
+      },
+      {
+        "offset": 3654,
+        "length": 2,
+        "text": "    -- Unavailabl"
+      },
+      {
+        "offset": 3657,
+        "length": 0,
+        "text": " in "
+      },
+      {
+        "offset": 3658,
+        "length": 1,
+        "text": "he standal"
+      },
+      {
+        "offset": 3660,
+        "length": 4,
+        "text": "n"
+      },
+      {
+        "offset": 3665,
+        "length": 0,
+        "text": " "
+      },
+      {
+        "offset": 3667,
+        "length": 19,
+        "text": "py"
+      },
+      {
+        "offset": 3687,
+        "length": 68,
+        "text": ""
+      },
+      {
+        "offset": 6462,
+        "length": 0,
+        "text": "\n-- Apply after the normal reset/expansion initialization on every opening.\nlocal StandaloneShowHide = ShowHideHandler;\nContextPtr:SetShowHideHandler(function(hidden)\n    StandaloneShowHide(hidden);\n    ToggleNetworkModeDisplay(false);\nend);\n"
+      }
+    ]
+  },
+  {
+    "path": "Contents/Assets/Assets/UI/FrontEnd/MainMenu.lua",
+    "before": "a3718901fcbe3adc3bc9ffe75aa71233a6abeb4022d36a50ae35c03e24549da3",
+    "after": "0cec6b04489a601e93ca3e374ee15e8e20f5714dc8d2f567dde105f2e50253bf",
+    "edits": [
+      {
+        "offset": 5111,
+        "length": 2,
+        "text": "\n    -- These are st"
+      },
+      {
+        "offset": 5114,
+        "length": 1,
+        "text": "re advertisements, not the inst"
+      },
+      {
+        "offset": 5117,
+        "length": 0,
+        "text": "led"
+      },
+      {
+        "offset": 5118,
+        "length": 4,
+        "text": "DLC manager.\n    f"
+      },
+      {
+        "offset": 5123,
+        "length": 0,
+        "text": "r _, "
+      },
+      {
+        "offset": 5124,
+        "length": 0,
+        "text": "ame in ipair"
+      },
+      {
+        "offset": 5125,
+        "length": 15,
+        "text": "("
+      },
+      {
+        "offset": 5141,
+        "length": 19,
+        "text": "\""
+      },
+      {
+        "offset": 5179,
+        "length": 197,
+        "text": "\""
+      },
+      {
+        "offset": 5378,
+        "length": 56,
+        "text": ""
+      },
+      {
+        "offset": 5435,
+        "length": 69,
+        "text": ""
+      },
+      {
+        "offset": 5523,
+        "length": 198,
+        "text": "\""
+      },
+      {
+        "offset": 5723,
+        "length": 55,
+        "text": ""
+      },
+      {
+        "offset": 5779,
+        "length": 69,
+        "text": ""
+      },
+      {
+        "offset": 5868,
+        "length": 7,
+        "text": "\"}"
+      },
+      {
+        "offset": 5877,
+        "length": 4,
+        "text": "do"
+      },
+      {
+        "offset": 5882,
+        "length": 10,
+        "text": "        "
+      },
+      {
+        "offset": 5893,
+        "length": 11,
+        "text": "f "
+      },
+      {
+        "offset": 5912,
+        "length": 20,
+        "text": "["
+      },
+      {
+        "offset": 5933,
+        "length": 207,
+        "text": ""
+      },
+      {
+        "offset": 6142,
+        "length": 3,
+        "text": ""
+      },
+      {
+        "offset": 6146,
+        "length": 226,
+        "text": "]"
+      },
+      {
+        "offset": 6377,
+        "length": 7,
+        "text": " C"
+      },
+      {
+        "offset": 6385,
+        "length": 4,
+        "text": "n"
+      },
+      {
+        "offset": 6391,
+        "length": 1,
+        "text": "ols[nam"
+      },
+      {
+        "offset": 6393,
+        "length": 17,
+        "text": "]"
+      },
+      {
+        "offset": 6419,
+        "length": 2,
+        "text": ""
+      },
+      {
+        "offset": 6422,
+        "length": 6,
+        "text": "rue"
+      },
+      {
+        "offset": 6430,
+        "length": 39,
+        "text": ""
+      },
+      {
+        "offset": 6470,
+        "length": 146,
+        "text": ""
+      },
+      {
+        "offset": 6620,
+        "length": 9,
+        "text": "    "
+      }
+    ]
+  },
+  {
+    "path": "Contents/Assets/Assets/UI/FrontEnd/Modding/ModsBrowser.lua",
+    "before": "2af483e9ee093ae4fd63e406e2d482d386f8454988ac63e3a101e95d454ed665",
+    "after": "0b0f034c92466b8645dc139bc6aa4622d03d007c43526b8cd8dff600145b5625",
+    "edits": [
+      {
+        "offset": 1047,
+        "length": 2,
+        "text": ""
+      },
+      {
+        "offset": 1050,
+        "length": 3,
+        "text": "ru"
+      },
+      {
+        "offset": 1054,
+        "length": 21,
+        "text": ""
+      },
+      {
+        "offset": 1223,
+        "length": 28,
+        "text": "    -- "
+      },
+      {
+        "offset": 1252,
+        "length": 35,
+        "text": ""
+      },
+      {
+        "offset": 1294,
+        "length": 3,
+        "text": " d"
+      },
+      {
+        "offset": 1299,
+        "length": 0,
+        "text": "nload"
+      },
+      {
+        "offset": 1300,
+        "length": 0,
+        "text": " r"
+      },
+      {
+        "offset": 1301,
+        "length": 1,
+        "text": "quire Ste"
+      },
+      {
+        "offset": 1303,
+        "length": 12,
+        "text": "m."
+      }
+    ]
+  },
+  {
+    "path": "Contents/Assets/Assets/UI/FrontEnd/OtherMenu.lua",
+    "before": "0e833a9aa79d055f9879e594ef9e141ba6fa216274786204233b2746fa87d580",
+    "after": "b2e8156e58ac3eedf642eef2eb127cc1abca4d69f19718ede4dfb9628575bb28",
+    "edits": [
+      {
+        "offset": 877,
+        "length": 0,
+        "text": "-- Standalone: no "
+      },
+      {
+        "offset": 882,
+        "length": 8,
+        "text": " n"
+      },
+      {
+        "offset": 891,
+        "length": 5,
+        "text": "ws o"
+      },
+      {
+        "offset": 902,
+        "length": 23,
+        "text": ""
+      },
+      {
+        "offset": 926,
+        "length": 37,
+        "text": ""
+      },
+      {
+        "offset": 2338,
+        "length": 4,
+        "text": "    -- Ste"
+      },
+      {
+        "offset": 2343,
+        "length": 17,
+        "text": "m"
+      },
+      {
+        "offset": 2361,
+        "length": 6,
+        "text": ""
+      },
+      {
+        "offset": 2368,
+        "length": 3,
+        "text": ""
+      },
+      {
+        "offset": 2381,
+        "length": 1,
+        "text": "s"
+      },
+      {
+        "offset": 2383,
+        "length": 22,
+        "text": ""
+      },
+      {
+        "offset": 2407,
+        "length": 1,
+        "text": "e"
+      },
+      {
+        "offset": 2409,
+        "length": 2,
+        "text": "unavailable."
+      },
+      {
+        "offset": 3169,
+        "length": 0,
+        "text": "\nControls.LatestNewsButton:SetHide(true);\nControls.LeaderboardButton:SetHide(true);\n"
+      }
+    ]
+  },
+  {
+    "path": "Contents/Assets/Assets/UI/InGame/Popups/EndGameMenu.lua",
+    "before": "eaf56590bded694c11c3296b0421aaa12624997d57ee374032bbf6cc1c5f8ce5",
+    "after": "5a0e1b622d6373423f53f6c6c5e6c4a655bb1aad32490533a1f78e79134c651b",
+    "edits": [
+      {
+        "offset": 11813,
+        "length": 1,
+        "text": "    -- No "
+      },
+      {
+        "offset": 11819,
+        "length": 3,
+        "text": " s"
+      },
+      {
+        "offset": 11823,
+        "length": 4,
+        "text": "or"
+      },
+      {
+        "offset": 11828,
+        "length": 5,
+        "text": " o"
+      },
+      {
+        "offset": 11839,
+        "length": 15,
+        "text": "."
+      },
+      {
+        "offset": 11940,
+        "length": 0,
+        "text": "\nControls.BeyondButton:SetHide(true);\n"
+      }
+    ]
+  },
+  {
+    "path": "Contents/Assets/Assets/UI/FrontEnd/LoadMenu.lua",
+    "before": "3b95f0746974a86beef1631477c40b8dcfa36cd6ed5ac1abea8896ad72df3162",
+    "after": "749a9c1469218f7b2a5796fea52301768de85588e8ea49ee50d0748322bce624",
+    "edits": [
+      {
+        "offset": 3625,
+        "length": 2,
+        "text": "fals"
+      },
+      {
+        "offset": 3628,
+        "length": 4,
+        "text": ""
+      },
+      {
+        "offset": 24751,
+        "length": 0,
+        "text": "\nControls.CloudCheck:SetHide(true);\nControls.CloudCheck:SetDisabled(true);\n"
+      }
+    ]
+  },
+  {
+    "path": "Contents/Assets/Assets/UI/InGame/Menus/SaveMenu.lua",
+    "before": "878ad24051dbceeb449149a4301e52c5bcf4ada9efe2c97f9b390bafce86c744",
+    "after": "f29d791c66683278fa668fbef6379bb72cfdf6900aa98fa6f938b9b259e591a4",
+    "edits": [
+      {
+        "offset": 17277,
+        "length": 6,
+        "text": "fa"
+      },
+      {
+        "offset": 17285,
+        "length": 8,
+        "text": ""
+      },
+      {
+        "offset": 17294,
+        "length": 14,
+        "text": ""
+      },
+      {
+        "offset": 21900,
+        "length": 0,
+        "text": "\nControls.CloudCheck:SetCheck(false);\nControls.CloudCheck:SetHide(true);\nControls.CloudCheck:SetDisabled(true);\n"
+      }
+    ]
+  }
+]

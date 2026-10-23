@@ -1,0 +1,26 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 57b5ce3..67667ef 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -46,12 +46,15 @@ if (APPLE)
+ 	)
+ endif()
+ 
+-# Find the protobuf compiler and libraries
+-include(FindProtobuf)
+-find_package(Protobuf 3.1.0 REQUIRED)
+-
+-# Generate the .h and .cxx files for dll/net.proto
+-protobuf_generate_cpp(PROTO_SRCS PROTO_HDRS dll/net.proto)
++# Build the pinned dependency for both architectures, without Homebrew linkage.
++FetchContent_MakeAvailable(Protobuf)
++set(PROTOBUF_INCLUDE_DIRS "${protobuf_SOURCE_DIR}/src")
++set(PROTO_SRCS "${CMAKE_CURRENT_BINARY_DIR}/net.pb.cc")
++set(PROTO_HDRS "${CMAKE_CURRENT_BINARY_DIR}/net.pb.h")
++add_custom_command(OUTPUT ${PROTO_SRCS} ${PROTO_HDRS}
++  COMMAND $<TARGET_FILE:protoc> --cpp_out=${CMAKE_CURRENT_BINARY_DIR}
++    -I ${CMAKE_CURRENT_SOURCE_DIR}/dll ${CMAKE_CURRENT_SOURCE_DIR}/dll/net.proto
++  DEPENDS protoc ${CMAKE_CURRENT_SOURCE_DIR}/dll/net.proto)
+ 
+ # Print path to generated files
+ message(STATUS "PROTO_SRCS = ${PROTO_SRCS}")
