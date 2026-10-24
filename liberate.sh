@@ -58,6 +58,9 @@ major=$(/usr/bin/sw_vers -productVersion);major=${major%%.*}
 helper="$ROOT/dependencies/civ-liberator"
 [[ -x "$helper" ]] || fail 'The native helper is missing. Download the complete repository.'
 /usr/bin/shasum -a 256 -c dependencies/native.sha256 >/dev/null 2>&1 || fail 'Native helper checksum mismatch. Restore it from a trusted copy.'
+# Browser downloads mark every file as quarantined, and macOS then refuses to run the ad-hoc signed
+# helper. Clear the mark from our own dependencies only, after the helper's checksum has matched.
+/usr/bin/xattr -dr com.apple.quarantine "$ROOT/dependencies" 2>/dev/null || true
 if [[ $unattended == no && $inspect == no && ! -t 0 ]]; then fail 'Interactive setup needs a terminal. Use --game and --yes for unattended use.';fi
 if [[ $inspect == yes ]]; then
  [[ $game == 5 || $game == 6 ]] || fail '--inspect requires --game 5 or --game 6.'

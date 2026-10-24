@@ -77,7 +77,7 @@ Use `NO_COLOR=1 bash liberate.sh` for plain output. For read-only game discovery
 
 The game is built in a temporary sibling directory and published only after signing and verification. Steam inputs are never modified. Failed builds remove their temporary app; already imported mods/data may remain and are preserved on retry. Interrupted processes or power loss can leave `.civ-liberator-*` folders; inspect them before removing them. The final rename refuses to replace a destination that appeared unexpectedly.
 
-The output is ad-hoc signed, not Developer ID signed or notarized. This project does not disable Gatekeeper, SIP or system protections. Use `Launcher.log` for startup diagnostics. Available disk space must cover the game and any retained backup; APFS sharing is an optimization, not a space guarantee.
+The output is ad-hoc signed, not Developer ID signed or notarized. This project does not disable Gatekeeper, SIP or system protections. A browser download, such as GitHub's Download ZIP, marks every file as quarantined, and macOS would then refuse to run the bundled helper. After the helper's checksum matches, setup removes that mark from its own `dependencies` folder only. It changes no Gatekeeper settings. Use `Launcher.log` for startup diagnostics. Available disk space must cover the game and any retained backup; APFS sharing is an optimization, not a space guarantee.
 
 ## Dependencies, source and rebuilding
 
@@ -106,7 +106,7 @@ The project's scripts use LGPL-3.0; Goldberg uses its included LGPL-3.0 license 
 
 ## Updating main
 
-The online installer fetches `main` directly, with no release, tag or commit pin. Each push becomes what new users download. Keep the scripts, bundled binaries and checksum files consistent in the same push.
+The online installer fetches `main` directly, with no release, tag or commit pin, and only works while the repository is public. Each push becomes what new users download. Keep the scripts, bundled binaries and checksum files consistent in the same push.
 
 Before pushing, run:
 
@@ -119,7 +119,7 @@ bash tests/prompts.sh
 bash tests/manage.sh
 ```
 
-`tests/prompts.sh` and `tests/manage.sh` answer the questions through a simulated terminal and decline at the end, so nothing is installed or rebuilt. Both need Civ VI installed in Steam.
+`tests/prompts.sh` answers the setup questions through a simulated terminal and declines at the end, so nothing is installed. `tests/manage.sh` does the same for `--manage`, then builds a Civ V copy in a temporary folder and switches Brave New World off and on in place. It takes about 20 seconds and deletes the copy afterwards. Both need Civ VI installed in Steam, and the Civ V part is skipped without Civ V. `tests/smoke.sh` also runs a copy marked as a browser download, to check setup still starts.
 
 Rebuild changed native code with `bash tools/build-native.sh`. After changing menu rules or library dependencies, run `dependencies/civ-liberator manifest 6 "$PWD"` to refresh their checksums. Menu tests require both supported Steam installations locally.
 

@@ -26,4 +26,10 @@ for game in 5 6; do
  [[ ! -e "$work/Fresh" ]]
  printf 'PASS Civ %s discovery, destination safety and expansion names\n' "$game"
 done
-printf 'PASS shell syntax, help, invalid arguments and dependency checks\n'
+# A browser download quarantines every file; setup must still run the helper, and clear the mark.
+mkdir "$work/zip"
+cp liberate.sh "$work/zip/" && cp -R dependencies "$work/zip/"
+find "$work/zip" -type f -exec xattr -w com.apple.quarantine "0081;$(printf '%x' "$(date +%s)");Safari;" {} \;
+(cd "$work/zip" && bash liberate.sh --game 6 --inspect >/dev/null)
+if xattr -p com.apple.quarantine "$work/zip/dependencies/libsteam_api.dylib" >/dev/null 2>&1;then echo 'Quarantine left on dependencies';exit 1;fi
+printf 'PASS shell syntax, help, invalid arguments, dependency checks and browser downloads\n'
