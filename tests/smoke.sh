@@ -21,6 +21,9 @@ for game in 5 6; do
  printf preserved > "$work/Applications/Sid Meier's Civilization $roman.app/sentinel"
  if dependencies/civ-liberator check "$game" "$source_app" "$work/Applications" "$work/Data" >/dev/null 2>&1;then echo 'Unrelated app accepted';exit 1;fi
  [[ $(cat "$work/Applications/Sid Meier's Civilization $roman.app/sentinel") == preserved ]]
- printf 'PASS Civ %s discovery and destination safety\n' "$game"
+ if bash liberate.sh --game "$game" --yes --without hotseat --destination "$work/Fresh" --data "$work/FreshData" > "$work/without.log" 2>&1;then echo 'Unknown expansion accepted';exit 1;fi
+ grep -q 'no installed expansion called hotseat' "$work/without.log"
+ [[ ! -e "$work/Fresh" ]]
+ printf 'PASS Civ %s discovery, destination safety and expansion names\n' "$game"
 done
 printf 'PASS shell syntax, help, invalid arguments and dependency checks\n'

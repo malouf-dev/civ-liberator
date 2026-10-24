@@ -9,11 +9,19 @@ struct Game {
     var support: String { number == "5" ? "Sid Meier's Civilization 5" : fullName }
     var executable: String { number == "5" ? "Civilization V" : "Civ6_Exe_Child" }
     var modsFolder: String { number == "5" ? "MODS" : "Mods" }
+    // Major expansions only; DLC packs always stay on. id matches the game's InAppPurchaseContent.
+    var expansions: [(key: String, id: String, name: String)] {
+        number == "5" ? [("godsandkings","dlc_godsandkings","Gods & Kings"),("bravenewworld","dlc_bravenewworld","Brave New World")]
+                      : [("riseandfall","riseandfall","Rise and Fall"),("gatheringstorm","gatheringstorm","Gathering Storm")]
+    }
 }
 let spec = Game(number: CommandLine.arguments.count > 2 ? CommandLine.arguments[2] : "6")
 func quote(_ s: String) -> String { "'" + s.replacingOccurrences(of:"'",with:"'\\''") + "'" }
 func url(_ s: String) -> URL { URL(fileURLWithPath:(s as NSString).expandingTildeInPath).standardizedFileURL }
 let fm = FileManager.default
+// Matches liberate.sh: colour only on a terminal, never when NO_COLOR is set.
+let colour = isatty(STDOUT_FILENO) != 0 && ProcessInfo.processInfo.environment["NO_COLOR"] == nil && (ProcessInfo.processInfo.environment["TERM"] ?? "dumb") != "dumb"
+func heading(_ s: String) -> String { colour ? "\n\u{1b}[1;34m==>\u{1b}[0m \u{1b}[1m\(s)\u{1b}[0m" : "\n==> \(s)" }
 
 // Inspect the directory entry itself: never follow a Steam shortcut into its game.
 func targetIdentity(_ target: URL) throws -> String {
@@ -58,8 +66,39 @@ func verifyDependencies(_ root: URL) throws {
         guard within(file,root),sha(try Data(contentsOf:file)) == hash else { throw SetupError("Dependency checksum mismatch: \(path)") }
     }
 }
-func install(root: URL, source: SteamInstall, folder: URL, data: URL, menus: Bool, mods: Bool, replacement: String = "none") throws {
-    try check(source,folder:folder,data:data,replacement:replacement);try verifyDependencies(root)
+// Expansions the Steam manifest owns, as "key<TAB>name" lines for liberate.sh.
+func installedExpansions(_ source: SteamInstall) -> [String] {
+    let owned = Set(matches("\"dlcappid\"\\s+\"(\\d+)\"", source.manifest).map { $0[1] })
+    let content = (NSDictionary(contentsOf:child(source.app,"Contents/Info.plist"))?["InAppPurchaseContent"] as? [[String: Any]]) ?? []
+    return spec.expansions.filter { e in content.contains { $0["id"] as? String == e.id && !steamIDs($0).isDisjoint(with: owned) } }.map { "\($0.key)\t\($0.name)" }
+}
+func expansionIDs(_ list: String) throws -> Set<String> {
+    Set(try list.split(separator: ",").map { key in
+        guard let e = spec.expansions.first(where: { $0.key == key }) else { throw SetupError("Unknown expansion: \(key)") }
+        return e.id
+    })
+}
+// --manage: rewrite the owned-content lists inside an existing copy and re-sign it, without rebuilding.
+func setExpansions(app: URL, source: SteamInstall, without: String) throws {
+    let off = try expansionIDs(without)
+    let game = child(app,"Contents/Helpers/Game.app"), settings = child(game,"Contents/MacOS/steam_settings"), record = child(app,"Contents/Resources/civ-liberator.json")
+    guard var choices = (try? JSONSerialization.jsonObject(with: Data(contentsOf: record))) as? [String: Any], fm.fileExists(atPath: settings.path) else { throw SetupError("This app was not made by Civ Liberator setup.") }
+    // Re-signing a running game can crash it; lsof exits 0 only when something has the executable open.
+    if (try? run("/usr/sbin/lsof",["-t",child(game,"Contents/MacOS/"+spec.executable).path])) != nil { throw SetupError("Quit \(spec.title) first, then run --manage again.") }
+    let content = (NSDictionary(contentsOf:child(game,"Contents/Info.plist"))?["InAppPurchaseContent"] as? [[String: Any]]) ?? []
+    print("    Updating the expansion list");fflush(stdout)
+    try writeOwnedContent(manifest: source.manifest, content: content, without: off, to: settings)
+    choices["without"] = without
+    try JSONSerialization.data(withJSONObject: choices).write(to: record, options: .atomic)
+    print("    Signing the app");fflush(stdout)
+    do {
+        for bundle in [game, app] { try run("/usr/bin/codesign",["--force","--deep","--sign","-",bundle.path]) }
+        try run("/usr/bin/codesign",["--verify","--deep","--strict",app.path])
+    } catch { throw SetupError("Signing did not finish, so the app may not open. Run --manage again to retry.\n\(error.localizedDescription)") }
+    print(heading("\(spec.title) is ready") + "\n    Open: \((app.path as NSString).abbreviatingWithTildeInPath)")
+}
+func install(root: URL, source: SteamInstall, folder: URL, data: URL, menus: Bool, mods: Bool, replacement: String = "none", without: String = "") throws {
+    let off=try expansionIDs(without);try check(source,folder:folder,data:data,replacement:replacement);try verifyDependencies(root)
     try fm.createDirectory(at:folder,withIntermediateDirectories:true)
     guard fm.isWritableFile(atPath:folder.path) else { throw SetupError("Destination is not writable. Choose ~/Applications; do not run with sudo.") }
     let stage=child(folder,".civ-liberator-" + UUID().uuidString)
@@ -91,23 +130,31 @@ func install(root: URL, source: SteamInstall, folder: URL, data: URL, menus: Boo
         if fm.fileExists(atPath:file.path) { try fm.copyItem(at:file,to:child(resources,icon)); info["CFBundleIconFile"]=icon }
     }
     try PropertyListSerialization.data(fromPropertyList:info,format:.xml,options:0).write(to:child(app,"Contents/Info.plist"))
-    try JSONSerialization.data(withJSONObject:["game":spec.number,"data":data.path]).write(to:child(resources,"civ-liberator.json"))
+    // Every setup choice, so liberate.sh --manage can rebuild without asking again.
+    let choices=["game":spec.number,"data":data.path,"source":source.app.path,"menus":menus ? "yes":"no","mods":mods ? "yes":"no","without":without]
+    try JSONSerialization.data(withJSONObject:choices).write(to:child(resources,"civ-liberator.json"))
     let builder=Builder(app:app)
     let tty = isatty(STDOUT_FILENO) != 0
-    var prior = "",last = -1
+    var prior = "",last = -1,open = false
+    // One line per phase; on a terminal the copy bar redraws in place until 100%.
     builder.updates = { update in
+        if update.title != prior {
+            if open { print("");open=false }
+            print("    " + (update.detail.isEmpty || update.total != nil ? update.title : update.title + ". " + update.detail));prior=update.title
+        }
         if let done=update.completed, let total=update.total,total>0 {
             let percent=Int(Double(done)/Double(total)*100)
             if percent != last {
                 let filled=percent/5
                 let bar=String(repeating:"=",count:filled)+String(repeating:" ",count:20-filled)
-                let line=String(format:"  [%@] %3d%%   %.2f / %.2f GB",bar,percent,Double(done)/1e9,Double(total)/1e9)
-                if tty { print("\r\u{1b}[2K"+line,terminator:percent == 100 ? "\n":"") } else if percent % 10 == 0 || percent == 100 { print(line) }
-                fflush(stdout);last=percent
+                let line=String(format:"    [%@] %3d%%  %.2f / %.2f GB",bar,percent,Double(done)/1e9,Double(total)/1e9)
+                if tty { print("\r\u{1b}[2K"+line,terminator:percent == 100 ? "\n":"");open = percent != 100 } else if percent % 10 == 0 || percent == 100 { print(line) }
+                last=percent
             }
-        } else if update.title != prior { print("\n  • \(update.title)");if !update.detail.isEmpty { print("    \(update.detail)") };fflush(stdout);prior=update.title }
+        }
+        fflush(stdout)
     }
-    _ = try builder.build(install:source,data:data,offline:menus,mods:mods)
+    do { _ = try builder.build(install:source,data:data,offline:menus,mods:mods,without:off) } catch { if open { print("") };throw error }
     let target=child(folder,spec.fullName+".app")
     var backup: URL?
     try validateReplacement(target, approval: replacement)
@@ -119,9 +166,11 @@ func install(root: URL, source: SteamInstall, folder: URL, data: URL, menus: Boo
         if let backup, !exists(target) { try? fm.moveItem(at:backup,to:target) }
         throw SetupError("Cannot publish the app without replacing another item.")
     }
-    print("\n  ✓ Civilization \(spec.number == "5" ? "V" : "VI") is ready\n\n  Open: \(target.path)\n  Saves and mods: \(data.path)")
-    if let backup { print("  Previous app backup: \(backup.path)") }
-    if mods { print("\n  Enable copied mods in the game\'s " + (spec.number == "6" ? "Additional Content" : "Mods") + " menu.") }
+    let short = { (url: URL) in (url.path as NSString).abbreviatingWithTildeInPath }
+    // Lines under a ==> heading are indented to match liberate.sh.
+    print(heading("\(spec.title) is ready") + "\n    Open: \(short(target))\n    Saves and mods: \(short(data))")
+    if let backup { print("    Previous app backup: \(short(backup))") }
+    if mods { print("    Enable copied mods in the game\'s " + (spec.number == "6" ? "Additional Content" : "Mods") + " menu.") }
 }
 @main struct Main {
  static func main() {
@@ -133,7 +182,9 @@ func install(root: URL, source: SteamInstall, folder: URL, data: URL, menus: Boo
    case "target-identity":
     guard args.count==4 else { throw SetupError("Invalid destination arguments") };print(try targetIdentity(child(url(args[3]),spec.fullName+".app")))
    case "check": guard [6,7].contains(args.count) else { throw SetupError("Invalid preflight arguments") };try check(SteamInstall.from(url(args[3])),folder:url(args[4]),data:url(args[5]),replacement:args.count==7 ? args[6] : "none")
-   case "build": guard [9,10].contains(args.count) else { throw SetupError("Invalid build arguments") };try install(root:url(args[3]),source:SteamInstall.from(url(args[4])),folder:url(args[5]),data:url(args[6]),menus:args[7]=="yes",mods:args[8]=="yes",replacement:args.count==10 ? args[9] : "none")
+   case "build": guard (9...11).contains(args.count) else { throw SetupError("Invalid build arguments") };try install(root:url(args[3]),source:SteamInstall.from(url(args[4])),folder:url(args[5]),data:url(args[6]),menus:args[7]=="yes",mods:args[8]=="yes",replacement:args.count>=10 ? args[9] : "none",without:args.count==11 ? args[10] : "")
+   case "set-expansions": guard args.count==6 else { throw SetupError("Invalid expansion arguments") };try setExpansions(app:url(args[3]),source:SteamInstall.from(url(args[4])),without:args[5])
+   case "expansions": guard args.count==4 else { throw SetupError("Invalid expansion arguments") };for line in installedExpansions(try SteamInstall.from(url(args[3]))) { print(line) }
    case "verify-menus":
     guard args.count==5 else { throw SetupError("Invalid menu verification arguments") }
     let patches=try JSONDecoder().decode([Patch].self,from:Data(contentsOf:url(args[3])))
@@ -152,6 +203,6 @@ func install(root: URL, source: SteamInstall, folder: URL, data: URL, menus: Boo
    case "verify":guard args.count==4 else { throw SetupError("Invalid verification arguments") };try verifyDependencies(url(args[3]));print("Dependencies verified")
    default:throw SetupError("Unknown command")
    }
-  } catch { fputs("\n  Error: \(error.localizedDescription)\n",stderr);exit(1) }
+  } catch { fputs((colour ? "\u{1b}[1;31mError:\u{1b}[0m " : "Error: ") + error.localizedDescription + "\n",stderr);exit(1) }
  }
 }

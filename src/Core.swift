@@ -37,6 +37,30 @@ func within(_ url: URL, _ parent: URL) -> Bool {
     return output
 }
 
+// Aspyr's InAppPurchaseContent gives steamID as a string, a number or an array of either.
+func steamIDs(_ item: [String: Any]) -> Set<String> {
+    let values = (item["steamID"] as? [Any]) ?? (item["steamID"].map { [$0] } ?? [])
+    return Set(values.map { String(describing: $0) })
+}
+
+// The owned-content lists the compatibility library reads, used by setup and by --manage.
+// Turned-off expansions, and content that requires them, stay as # comments in DLC.txt
+// and are left out of depots.txt, so the game sees them as not owned.
+func writeOwnedContent(manifest: String, content: [[String: Any]], without: Set<String>, to settings: URL) throws {
+    var dlc = Set(matches("\"dlcappid\"\\s+\"(\\d+)\"", manifest).map { $0[1] })
+    for item in content {
+        let ids = steamIDs(item)
+        if !ids.isDisjoint(with: dlc) { dlc.formUnion(ids) }
+    }
+    var off = Set<String>()
+    for item in content where [item["id"], item["requires"]].contains(where: { ($0 as? String).map(without.contains) == true }) { off.formUnion(steamIDs(item)) }
+    for pair in matches("\"(\\d+)\"\\s*\\{[^{}]*?\"dlcappid\"\\s*\"(\\d+)\"", manifest) where off.contains(pair[1]) || off.contains(pair[2]) { off.formUnion([pair[1], pair[2]]) }
+    let lines = dlc.union(off).sorted().map { (off.contains($0) ? "#" : "") + "\($0)=Installed DLC \($0)" }
+    try Data((lines.joined(separator: "\n") + "\n").utf8).write(to: child(settings, "DLC.txt"), options: .atomic)
+    let depots = Set(matches("\"(\\d+)\"\\s*\\{\\s*\"manifest\"", manifest).map { $0[1] }).subtracting(off)
+    try Data((depots.sorted().joined(separator: "\n") + "\n").utf8).write(to: child(settings, "depots.txt"), options: .atomic)
+}
+
 struct SteamInstall {
     let app: URL
     let steamapps: URL
@@ -192,7 +216,8 @@ final class Builder {
         for (link, destination) in links {
             try mkdir(link.deletingLastPathComponent())
             if let existing = try? fm.destinationOfSymbolicLink(atPath: link.path) {
-                guard existing == destination.path else { throw SetupError("The runtime folder points to a different data directory: \(link.path)") }
+                // Compare resolved paths: /tmp and /private/tmp name the same folder.
+                guard URL(fileURLWithPath: existing).resolvingSymlinksInPath().path == destination.resolvingSymlinksInPath().path else { throw SetupError("The runtime folder points to a different data directory: \(link.path)") }
             } else if fm.fileExists(atPath: link.path) {
                 throw SetupError("The runtime folder already contains conflicting data: \(link.path)")
             } else { try fm.createSymbolicLink(atPath: link.path, withDestinationPath: destination.path) }
@@ -239,7 +264,7 @@ final class Builder {
         return imported
     }
 
-    func build(install: SteamInstall, data: URL, offline: Bool, mods: Bool) throws -> Configuration {
+    func build(install: SteamInstall, data: URL, offline: Bool, mods: Bool, without: Set<String> = []) throws -> Configuration {
         guard !fm.fileExists(atPath: game.path), !fm.fileExists(atPath: configURL.path) else { throw SetupError("This app already contains a game. Use a fresh setup app to rebuild.") }
         guard !within(app, install.steamapps), !within(data, app), !within(app, data),
               !within(data, install.steamapps), !within(data, child(home, "Library/Application Support/Steam")),
@@ -277,17 +302,9 @@ final class Builder {
             let interfaces = String(decoding: try Data(contentsOf:child(install.app,"Contents/MacOS/libsteam_api.dylib")), as:UTF8.self).replacingOccurrences(of:"\0",with:"\n")
             let versions = Set(matches("(?m)^(?:Steam[A-Za-z_]+|STEAM[A-Z_]+)\\d{3}$", interfaces).map { $0[0] })
             try write(versions.sorted().joined(separator: "\n") + "\n", to: child(settings, "steam_interfaces.txt"))
-            var dlc = Set(matches("\"dlcappid\"\\s+\"(\\d+)\"", install.manifest).map { $0[1] })
             let plistURL = child(stagedGame, "Contents/Info.plist")
             guard var plist = try PropertyListSerialization.propertyList(from: Data(contentsOf: plistURL), format: nil) as? [String: Any] else { throw SetupError("Invalid game Info.plist.") }
-            for item in plist["InAppPurchaseContent"] as? [[String: Any]] ?? [] {
-                let values = (item["steamID"] as? [Any]) ?? (item["steamID"].map { [$0] } ?? [])
-                let ids = Set(values.map { String(describing: $0) })
-                if !ids.isDisjoint(with: dlc) { dlc.formUnion(ids) }
-            }
-            try write(dlc.sorted().map { "\($0)=Installed DLC \($0)" }.joined(separator: "\n") + "\n", to: child(settings, "DLC.txt"))
-            let depots = Set(matches("\"(\\d+)\"\\s*\\{\\s*\"manifest\"", install.manifest).map { $0[1] })
-            try write(depots.sorted().joined(separator: "\n") + "\n", to: child(settings, "depots.txt"))
+            try writeOwnedContent(manifest: install.manifest, content: plist["InAppPurchaseContent"] as? [[String: Any]] ?? [], without: without, to: settings)
             plist["CFBundleName"] = spec.fullName
             plist["CFBundleDisplayName"] = spec.fullName
             // Localized strings override Info.plist in Finder and the running game.

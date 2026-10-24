@@ -20,7 +20,7 @@ bash liberate.sh --game 5 \
   --source "$HOME/Library/Application Support/Steam/steamapps/common/Sid Meier's Civilization V/Civilization V.app"
 ```
 
-`--no-menus` keeps the original menus. Use it if a game update does not match the bundled, checksum-verified menu patches. `--no-mods` skips mod import. `--yes` accepts the supplied/default choices; replacing an existing app also requires `--replace`. The existing directory entry is backed up, including older builds and Steam aliases; shortcut targets are never moved. Setup stops if that entry changes while the new app is being built.
+Relative paths, in options or typed at a prompt, start from the folder you ran setup from. `--no-menus` keeps the original menus. Use it if a game update does not match the bundled, checksum-verified menu patches. `--no-mods` skips mod import. `--without NAME` turns off an expansion and can be repeated: `godsandkings` or `bravenewworld` for Civ V, `riseandfall` or `gatheringstorm` for Civ VI. `--yes` accepts the supplied/default choices; replacing an existing app also requires `--replace`. The existing directory entry is backed up, including older builds and Steam aliases; shortcut targets are never moved. Setup stops if that entry changes while the new app is being built.
 
 ## macOS and processor support
 
@@ -56,7 +56,9 @@ Mod import reads unpacked local mods first, then the selected library's `steamap
 
 ## What works and what is unavailable
 
-The script retains installed expansions/DLC and local single-player/hotseat entry points. It derives the DLC list from the local Steam manifest and corresponding Aspyr metadata; it does not download or grant missing content.
+The script retains installed expansions/DLC and local single-player/hotseat entry points. It derives the DLC list from the local Steam manifest and corresponding Aspyr metadata; it does not download or grant missing content. The list is written to `Contents/Helpers/Game.app/Contents/MacOS/steam_settings/DLC.txt` inside the app. A turned-off expansion, and any content that requires it, stays in that file as a `#` comment and is left out of `depots.txt`, so the game sees it as not owned. Editing the file by hand breaks the app's signature, so change expansions with `bash liberate.sh --manage`.
+
+Setup records every choice in the app's `Contents/Resources/civ-liberator.json`: game, Steam source, data folder, menus, mods and turned-off expansions. `--manage` reads that file and asks only about expansions. It then rewrites `DLC.txt`, `depots.txt` and the recorded `without` value in place, re-signs the inner game and the outer app, and verifies the signature. It does not copy the game or make a backup. It refuses to run while that copy of the game is open, because re-signing a running game can crash it. If signing is interrupted, the app may not open until `--manage` is run again. If the recorded Steam copy has moved, it looks for the game again. It accepts `--game` and `--destination` to pick a copy, and `--without` with `--yes` for unattended use, for example `bash liberate.sh --manage --game 6 --yes --without gatheringstorm`. `--without none` turns every expansion back on. Other options are refused, because `--manage` keeps them as recorded.
 
 Unavailable in the independent copy:
 
@@ -113,7 +115,11 @@ bash tests/smoke.sh
 bash tests/replacement.sh
 bash tests/menus.sh
 bash tests/installer.sh
+bash tests/prompts.sh
+bash tests/manage.sh
 ```
+
+`tests/prompts.sh` and `tests/manage.sh` answer the questions through a simulated terminal and decline at the end, so nothing is installed or rebuilt. Both need Civ VI installed in Steam.
 
 Rebuild changed native code with `bash tools/build-native.sh`. After changing menu rules or library dependencies, run `dependencies/civ-liberator manifest 6 "$PWD"` to refresh their checksums. Menu tests require both supported Steam installations locally.
 
